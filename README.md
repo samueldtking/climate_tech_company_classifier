@@ -53,5 +53,28 @@ Project Organization
 
 
 --------
+Stopping Criteria 
+------------
+- The prediction has to be performative enough that it actually saves me time compared to classifying companies manually (circa 100 startups per city, so for each prediction with high enough confidence to be automated, say >90%, would save me around 30-90 seconds per instance reading the description or reviewing the website to classify the company) 
+- The classifier needs to go down to 2nd hierarchy (subdomain) to allow total automation but the accuracy at this level is less critical (tag suggestion is only a nice-to-have)
+- The classifier does need to account for the long-tail of non/under-represented classes that are not in the label set, however this could be pushed if examples cannot be found. 
+- There needs to be a way for me to focus just on the ones that need to be manually checked (e.g. model is still uncertain) and accept those where the model is confident 
+- There needs to be an easy way for these suggestions to augment the collect data so what it practically saves me time in my workflow 
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+Todo
+------------
+- Define stopping-critiera [X]
+- impliment basic classifier [X]
+- assess issue areas with LIME 
+- setup MLflow service to track experiments 
+- improve data prep and cleaning 
+- explore more sophisticated classifiers (Hugging face text-classifier)
+- explore other techniques to improve model towards stopping-criteria
+- extend to 2nd hierarchy (subdomain) and explore hierarchical model options 
+- explore options for extending to tags (e.g. keyword analysis, topic modelling, word summarization) 
+- create simple streamlit app to make it useful:
+         -company text input -> prediction + probability
+         - upload csv -> return filled csv
+         - label feedback learning system?
+- write core property-based testing 
+- package/containerize and deploy 
